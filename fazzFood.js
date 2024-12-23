@@ -22,11 +22,11 @@ function FazzFood(harga, voucher, jarak, pajak) {
     discount > 30000 ? (discount = 30000) : discount;
   }
 
-  if (jarak <= 2) {
+  if (jarak >= 2) {
+    ongkir = (jarak - 2) * 3000 + 5000;
+  } else {
     ongkir = jarak * 5000;
   }
-
-  ongkir = (jarak - 2) * 3000 + 5000;
 
   if (pajak) {
     tax = harga * 0.05;
@@ -43,4 +43,4 @@ function FazzFood(harga, voucher, jarak, pajak) {
 }
 
 // Contoh pemanggilan
-FazzFood(50000, "asdsa", 2, false);
+FazzFood(100000, "FAZZFOOD50", 2, false);
