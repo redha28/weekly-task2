@@ -1,38 +1,29 @@
-// Task 1
+// NO.1
 function fetchData(status) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      if (status !== true) {
-        reject("Gagal mengambil Data");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (status === true) {
+        resolve("Data berhasil diambil");
+      } else {
+        reject("Gagal mengambil data");
       }
-      resolve("Berhasil Mengambil Data");
-    }, 2000);
+    }, 3000);
   });
 }
 
+// then-catch
 fetchData(true)
-  .then((response) => {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  .then((hasil) => console.log(`Hasil: ${hasil}`))
+  .catch((error) => console.log(`Error: ${error}`));
 
-function updateProfile(status) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      if (status !== true) {
-        reject("Gagal Update Foto");
-      }
-      resolve("Berhasil Update Foto");
-    }, 2000);
-  });
+// Async-Await with try catch
+async function prosesData() {
+  try {
+    const data = await fetchData(false);
+    console.log(`Hasil: ${data}`);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 }
 
-updateProfile(true)
-  .then((response) => {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+prosesData();
